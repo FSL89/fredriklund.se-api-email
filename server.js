@@ -50,7 +50,7 @@ fastify.get('/', async (request, reply) => {
   }
 })
 
-fastify.post('/email/send', async (request, reply) => {
+fastify.post('/send', async (request, reply) => {
   try {
     console.log(request.body)
     if (!request.body) throw await onError(400, 'Bad request', 'Missing request body')
