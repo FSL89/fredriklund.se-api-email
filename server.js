@@ -71,7 +71,7 @@ fastify.post('/api/email/send', async (request, reply) => {
     })
   }
   catch (error) {
-    await reply.code(error.code ? error.code : 500).send(error)
+    await reply.send(error)
   }
 })
 
