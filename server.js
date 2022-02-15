@@ -20,7 +20,9 @@ let transporter = nodemailer.createTransport({
     domainName: 'fredriklund.se',
     keySelector: 'default',
     privateKey: process.env.DKIM_PRIVATE_KEY
-  }
+  },
+  debug: true,
+  logger: true
 })
 
 //
@@ -67,8 +69,7 @@ fastify.post('/api/email/send', async (request, reply) => {
       envelope: info.envelope,
       from: request.body.from,
       to: request.body.to,
-      subject: request.body.subject,
-      test: fs.readFileSync('/etc/opendkim/keys/opendkim/default.private')
+      subject: request.body.subject
     })
   }
   catch (error) {
