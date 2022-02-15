@@ -8,9 +8,9 @@ const fastify = require('fastify')({
 //  Setup Nodemailer
 //
 
-const Mailer = require('nodemailer')
+const nodemailer = require('nodemailer')
 
-let transporter = Mailer.createTransport({
+let transporter = nodemailer.createTransport({
   sendmail: true,
   newline: 'unix',
   path: '/usr/bin/sendmail',
@@ -50,20 +50,24 @@ fastify.get('/api/email', async (request, reply) => {
   }
 })
 
+// Won't work in local dev
 fastify.post('/api/email/send', async (request, reply) => {
   try {
     console.log(request.body)
     if (!request.body) throw await onError(400, 'Bad request', 'Missing request body')
     console.log(request)
-    //transporter.sendMail({
-    //  to: 'fredrik.lund89@gmail.com',
-    //  from: 'noreply@fredriklund.se',
-    //  subject: 'Testing mail function with Nodemailer',
-    //  text: 'This is my message in text',
-    //  html: '<h1>Hi</h1><br /><p>This is my message in HTML</p>'
-    //})
+    let info = await transporter.sendMail({
+      from: request.body.from, // Can also be used with alias, such as '"Fredrik Lund" <email@fredriklund.se>'
+      to: request.body.to, // Recipient, can be sent to multiple addresses using comma as separator
+      subject: request.body.subject, // Subject
+      text: request.body.text, // Text body
+      html: request.body.html // HTML body
+    })
     reply.send({
-      foo: 'bar'
+      message_id: info.messageId,
+      from: request.body.from,
+      to: request.body.to,
+      subject: request.body.subject
     })
   }
   catch (error) {
