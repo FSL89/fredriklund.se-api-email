@@ -39,7 +39,7 @@ const onError = async (code, name, message) => {
 //  Routes
 //
 
-fastify.get('/', async (request, reply) => {
+fastify.get('/api/email', async (request, reply) => {
   try {
     return { 
       status: 'Running'
@@ -50,7 +50,7 @@ fastify.get('/', async (request, reply) => {
   }
 })
 
-fastify.post('/send', async (request, reply) => {
+fastify.post('/api/email/send', async (request, reply) => {
   try {
     console.log(request.body)
     if (!request.body) throw await onError(400, 'Bad request', 'Missing request body')
