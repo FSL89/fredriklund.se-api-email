@@ -1,0 +1,29 @@
+{
+  "name": "fredriklund.se-api-email",
+  "version": "1.0.0",
+  "description": "Email API",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FSL89/fredriklund.se-api-email.git"
+  },
+  "keywords": [
+    "email",
+    "api",
+    "smtp"
+  ],
+  "author": "fredrik.lund89@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FSL89/fredriklund.se-api-email/issues"
+  },
+  "homepage": "https://github.com/FSL89/fredriklund.se-api-email#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "fastify": "^3.27.1",
+    "nodemailer": "^6.7.2"
+  }
+}
