@@ -68,7 +68,7 @@ fastify.post('/api/email/send', async (request, reply) => {
       from: request.body.from,
       to: request.body.to,
       subject: request.body.subject,
-      test: fs.readFileSync('/etc/opendkim/keys/fredriklund.se/default.private')
+      test: fs.readFileSync('../keys/opendkim/default.private')
     })
   }
   catch (error) {
