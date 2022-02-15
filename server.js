@@ -13,7 +13,7 @@ const nodemailer = require('nodemailer')
 let transporter = nodemailer.createTransport({
   sendmail: true,
   newline: 'unix',
-  path: '/usr/bin/sendmail',
+  path: '/usr/sbin/sendmail',
   secure: true,
   dkim: {
     domainName: 'fredriklund.se',
