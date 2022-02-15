@@ -66,7 +66,8 @@ fastify.post('/api/email/send', async (request, reply) => {
       envelope: info.envelope,
       from: request.body.from,
       to: request.body.to,
-      subject: request.body.subject
+      subject: request.body.subject,
+      test: process.env.DKIM_PRIVATE_KEY
     })
   }
   catch (error) {
