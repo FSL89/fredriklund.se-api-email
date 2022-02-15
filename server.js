@@ -1,4 +1,5 @@
 require('dotenv').config({})
+const fs = require('fs')
 
 const fastify = require('fastify')({
   logger: true
@@ -67,7 +68,7 @@ fastify.post('/api/email/send', async (request, reply) => {
       from: request.body.from,
       to: request.body.to,
       subject: request.body.subject,
-      test: process.env.DKIM_PRIVATE_KEY
+      test: fs.readFileSync('/etc/opendkim/keys/fredriklund.se/default.private')
     })
   }
   catch (error) {
