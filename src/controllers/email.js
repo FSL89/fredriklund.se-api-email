@@ -62,7 +62,8 @@ exports.history = async (request, reply) => {
     const data = await history.findAndCountAll()
     console.log(data)
     reply.send({
-      foo: 'bar'
+      count: data.count,
+      rows: data.rows
     })
   }
   catch (error) {
