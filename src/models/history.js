@@ -15,7 +15,7 @@ History.init({
     type: DataTypes.STRING
   },
   status: {
-    type: DataTypes.INTEGER
+    type: DataTypes.STRING
   },
   from: {
     type: DataTypes.STRING
