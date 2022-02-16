@@ -29,7 +29,6 @@ let transporter = nodemailer.createTransport({
 exports.send = async (request, reply) => {
   try {
     if (!request.body) throw await onError(400, 'Bad request', 'Missing request body')
-    console.log(transporter)
     let info = await transporter.sendMail({
       from: request.body.from, // Can also be used with alias, such as '"Fredrik Lund" <email@fredriklund.se>'
       to: request.body.to, // Recipient, can be sent to multiple addresses using comma as separator
@@ -39,10 +38,15 @@ exports.send = async (request, reply) => {
     })
     reply.send({
       message_id: info.messageId,
-      envelope: info.envelope,
       from: request.body.from,
       to: request.body.to,
-      subject: request.body.subject
+      subject: request.body.subject,
+      status: {
+        accepted: info.accepted,
+        rejected: info.rejected,
+        pending: info.pending,
+        response: info.response
+      }
     })
   }
   catch (error) {

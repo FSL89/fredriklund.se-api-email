@@ -29,8 +29,9 @@ const onError = async (code, name, message) => {
 }
 
 //
-//  Fastify Hook(s)
+//  Global Fastify Hook(s)
 //
+
 fastify.addHook('preValidation', async (request, reply) => {
   try {
     fastify.log.info('TODO: Add security checks here. We do not want unauthorized access')

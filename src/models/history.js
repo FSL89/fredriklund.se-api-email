@@ -36,5 +36,22 @@ History.init({
   modelName: 'history',
   schema: 'email',
   timestamps: false,
-  underscored: true
+  underscored: true,
+  freezeTableName: true
 })
+
+//
+//  Associations
+//
+
+//
+//  Syncing
+//
+
+History.sync({ force: false, alter: true })
+
+//
+//  Export
+//
+
+module.exports = sequelize.models
