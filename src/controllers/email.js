@@ -36,7 +36,6 @@ exports.send = async (request, reply) => {
       text: request.body.text, // Text body
       html: request.body.html // HTML body
     })
-    console.log(info)
     await history.create({
       message_id: info.messageId,
       status: info.response,
@@ -51,6 +50,19 @@ exports.send = async (request, reply) => {
       from: request.body.from,
       to: request.body.to,
       subject: request.body.subject
+    })
+  }
+  catch (error) {
+    await reply.send(error)
+  }
+}
+
+exports.history = async (request, reply) => {
+  try {
+    const data = await history.findAndCountAll()
+    console.log(data)
+    reply.send({
+      foo: 'bar'
     })
   }
   catch (error) {
