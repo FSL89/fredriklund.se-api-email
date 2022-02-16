@@ -36,6 +36,7 @@ exports.send = async (request, reply) => {
       text: request.body.text, // Text body
       html: request.body.html // HTML body
     })
+    console.log(info)
     reply.send({
       message_id: info.messageId,
       from: request.body.from,
