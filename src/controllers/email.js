@@ -37,17 +37,20 @@ exports.send = async (request, reply) => {
       html: request.body.html // HTML body
     })
     console.log(info)
-    reply.send({
+    await history.create({
       message_id: info.messageId,
+      status: info.response,
       from: request.body.from,
       to: request.body.to,
       subject: request.body.subject,
-      status: {
-        accepted: info.accepted,
-        rejected: info.rejected,
-        pending: info.pending,
-        response: info.response
-      }
+      date: now.toISOString()
+    })
+    reply.send({
+      message_id: info.messageId,
+      response: info.response,
+      from: request.body.from,
+      to: request.body.to,
+      subject: request.body.subject
     })
   }
   catch (error) {
