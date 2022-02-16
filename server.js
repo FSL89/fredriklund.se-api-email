@@ -17,13 +17,18 @@ let transporter = nodemailer.createTransport({
   path: '/usr/sbin/sendmail',
   secure: true,
   dkim: {
-    domainName: 'fredriklund.se',
-    keySelector: 'default',
-    privateKey: process.env.DKIM_PRIVATE_KEY
+    keys: [
+      {
+        domainName: 'fredriklund.se',
+        keySelector: 'default',
+        privateKey: fs.readFileSync("private_key.pem")//process.env.DKIM_PRIVATE_KEY
+      }
+    ]
   },
   debug: true,
-  logger: true
 })
+
+console.log(fs.readFileSync("private_key.pem"))
 
 //
 //  Functions
