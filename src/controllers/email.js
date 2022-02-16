@@ -60,7 +60,6 @@ exports.send = async (request, reply) => {
 exports.history = async (request, reply) => {
   try {
     const data = await history.findAndCountAll()
-    console.log(data)
     reply.send({
       count: data.count,
       rows: data.rows
