@@ -21,14 +21,12 @@ let transporter = nodemailer.createTransport({
       {
         domainName: 'fredriklund.se',
         keySelector: 'default',
-        privateKey: fs.readFileSync("private_key.pem")//process.env.DKIM_PRIVATE_KEY
+        privateKey: fs.readFileSync("private_key.pem")
       }
     ]
   },
   debug: true,
 })
-
-console.log(fs.readFileSync("private_key.pem"))
 
 //
 //  Functions
