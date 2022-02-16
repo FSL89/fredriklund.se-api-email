@@ -43,7 +43,7 @@ exports.send = async (request, reply) => {
       from: request.body.from,
       to: request.body.to,
       subject: request.body.subject,
-      date: now.toISOString()
+      date: new Date().toISOString()
     })
     reply.send({
       message_id: info.messageId,
