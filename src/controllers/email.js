@@ -13,6 +13,7 @@ let transporter = nodemailer.createTransport({
   sendmail: true,
   newline: 'unix',
   path: '/usr/sbin/sendmail',
+  args: [], // Optional
   secure: true,
   dkim: {
     keys: [
