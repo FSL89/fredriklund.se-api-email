@@ -23,6 +23,7 @@
   "homepage": "https://github.com/FSL89/fredriklund.se-api-email#readme",
   "dependencies": {
     "ajv": "^8.10.0",
+    "axios": "^0.26.0",
     "dotenv": "^16.0.0",
     "fastify": "^3.27.1",
     "nodemailer": "^6.7.2",
