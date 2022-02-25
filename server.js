@@ -15,6 +15,8 @@ const start = async () => {
   }
 }
 
+const axios = require('axios')
+
 //
 //  Functions
 //
@@ -34,7 +36,19 @@ const onError = async (code, name, message) => {
 
 fastify.addHook('preValidation', async (request, reply) => {
   try {
-    fastify.log.info('TODO: Add security checks here. We do not want unauthorized access')
+
+    // 1. Check if incoming request include API key
+    if (request.headers['x-api-key']) {
+      reply.code(400).send({
+        error: true,
+        type: 'Bad Request',
+        message: 'Missing API key'
+      })
+    }
+
+    // 2. Verify the API key
+    
+
   }
   catch (error) {
     fastify.log.error(error)
